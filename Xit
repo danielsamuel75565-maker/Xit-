@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Danizin Hub</title>
+
+<style>
+:root{
+  --red:#b00000;
+  --red-dark:#7a0000;
+  --white:#ffffff;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#b00000,#5a0000);
+  color:var(--white);
+}
+
+/* LAYOUT */
+.app{
+  display:flex;
+  min-height:100vh;
+}
+
+/* SIDEBAR */
+.sidebar{
+  width:230px;
+  background:#8a0000;
+  border-right:2px solid var(--white);
+  padding:12px;
+}
+
+.logo{
+  text-align:center;
+  font-size:22px;
+  color:var(--white);
+  margin-bottom:14px;
+  font-weight:bold;
+}
+
+.menu{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:6px;
+}
+
+.menu button{
+  background:transparent;
+  border:1px solid var(--white);
+  color:var(--white);
+  padding:10px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* CONTENT */
+.content{
+  flex:1;
+  padding:15px;
+}
+
+.tab{display:none}
+.tab.active{display:block}
+
+.header{
+  color:var(--white);
+  margin-bottom:10px;
+  font-size:18px;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:12px;
+}
+
+/* CARD */
+.card{
+  background:#9a0000;
+  border:2px solid var(--white);
+  border-radius:14px;
+  padding:14px;
+}
+
+/* OPTION */
+.option{
+  display:grid;
+  grid-template-columns:1fr 90px;
+  align-items:center;
+  padding:7px 0;
+  font-size:13px;
+  border-bottom:1px solid rgba(255,255,255,.4);
+}
+
+.option:last-child{
+  border-bottom:none;
+}
+
+/* RANGE */
+input[type=range]{
+  width:100%;
+  height:4px;
+  appearance:none;
+  background:rgba(255,255,255,.4);
+  border-radius:10px;
+}
+
+input[type=range]::-webkit-slider-thumb{
+  appearance:none;
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#fff;
+}
+
+/* SWITCH */
+.switch{
+  width:36px;
+  height:18px;
+  background:rgba(255,255,255,.4);
+  border-radius:20px;
+  position:relative;
+  cursor:pointer;
+}
+
+.switch::after{
+  content:'';
+  width:14px;
+  height:14px;
+  background:#fff;
+  border-radius:50%;
+  position:absolute;
+  top:2px;
+  left:2px;
+  transition:.2s;
+}
+
+.switch.on{
+  background:#ffffff;
+}
+
+.switch.on::after{
+  left:20px;
+  background:#b00000;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .app{
+    flex-direction:column;
+  }
+
+  .sidebar{
+    width:100%;
+    border-right:none;
+    border-bottom:2px solid var(--white);
+  }
+
+  .menu{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .menu button{
+    font-size:12px;
+    padding:8px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="app">
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="logo">Danizin Hub</div>
+  <div class="menu">
+    <button onclick="openTab('assist')">Assist</button>
+    <button onclick="openTab('aim')">Aim</button>
+    <button onclick="openTab('visual')">Visual</button>
+    <button onclick="openTab('sense')">Sense</button>
+    <button onclick="openTab('ai')">AI</button>
+    <button onclick="openTab('system')">Sistema</button>
+    <button onclick="openTab('monitor')">Monitor</button>
+    <button onclick="openTab('profiles')">Perfis</button>
+    <button onclick="openTab('interface')">UI</button>
+    <button onclick="openTab('extras')">Extras</button>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<div id="assist" class="tab active">
+<h3 class="header">Assistência</h3>
+<div class="grid"><div class="card">
+  <div class="option"><span>Correção Inteligente</span><div class="switch"></div></div>
+  <div class="option"><span>Suavização</span><input type="range"></div>
+  <div class="option"><span>Estabilidade</span><input type="range"></div>
+  <div class="option"><span>Zona Adaptativa</span><div class="switch"></div></div>
+</div></div></div>
+
+<div id="aim" class="tab">
+<h3 class="header">Ajustes de Mira</h3>
+<div class="grid"><div class="card">
+  <div class="option"><span>Prioridade Central</span><div class="switch"></div></div>
+  <div class="option"><span>Resposta Rápida</span><div class="switch"></div></div>
+  <div class="option"><span>Campo Visual</span><input type="range"></div>
+</div></div></div>
+
+<div id="visual" class="tab">
+<h3 class="header">Visual & HUD</h3>
+<div class="grid"><div class="card">
+  <div class="option"><span>Destaque Visual</span><div class="switch"></div></div>
+  <div class="option"><span>HUD Limpo</span><div class="switch"></div></div>
+  <div class="option"><span>Opacidade HUD</span><input type="range"></div>
+</div></div></div>
+
+<div id="sense" class="tab">
+<h3 class="header">Sensibilidade</h3>
+<div class="grid"><div class="card">
+  <div class="option"><span>Calibração Geral</span><input type="range"></div>
+  <div class="option"><span>Micro Ajuste</span><input type="range"></div>
+</div></div></div>
+
+<div id="ai" class="tab">
+<h3 class="header">Sistema Inteligente</h3>
+<div class="grid"><div class="card">
+  <div class="option"><span>AI Ativa</span><div class="switch"></div></div>
+  <div class="option"><span>Análise Visual</span><div class="switch"></div></div>
+</div></div></div>
+
+<div id="system" class="tab">
+<h3 class="header">Sistema</h3>
+<div class="grid"><div class="card">
+  <div class="option"><span>Modo Performance</span><div class="switch"></div></div>
+  <div class="option"><span>Otimização</span><div class="switch"></div></div>
+</div></div></div>
+
+<div id="monitor" class="tab">
+<h3 class="header">Monitoramento</h3>
+<div class="grid"><div class="card">
+  <div class="option"><span>Status do Painel</span><div class="switch on"></div></div>
+  <div class="option"><span>Indicador Visual</span><div class="switch"></div></div>
+</div></div></div>
+
+<div id="profiles" class="tab">
+<h3 class="header">Perfis</h3>
+<div class="grid"><div class="card">
+  <div class="option"><span>Perfil Padrão</span><div class="switch on"></div></div>
+  <div class="option"><span>Perfil Custom</span><div class="switch"></div></div>
+</div></div></div>
+
+<div id="interface" class="tab">
+<h3 class="header">Interface</h3>
+<div class="grid"><div class="card">
+  <div class="option"><span>Tema Vermelho</span><div class="switch on"></div></div>
+  <div class="option"><span>Animações</span><div class="switch"></div></div>
+</div></div></div>
+
+<div id="extras" class="tab">
+<h3 class="header">Extras</h3>
+<div class="grid"><div class="card">
+  <div class="option"><span>Modo Beta</span><div class="switch"></div></div>
+</div></div></div>
+
+</div>
+</div>
+
+<script>
+function openTab(id){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+document.addEventListener('click',e=>{
+  if(e.target.classList.contains('switch')){
+    e.target.classList.toggle('on');
+  }
+});
+</script>
+
+</body>
+</html>
